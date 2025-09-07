@@ -98,7 +98,10 @@ SCENES = {
 }
 
 scene = SCENES[st.session_state.scene]
-st.image("images/" + scene["img"])
+import os
+
+img_path = os.path.join(os.path.dirname(__file__), "images", scene["img"])
+st.image(img_path)
 st.write(scene["text"])
 for label, target in scene.get("choices", []):
     st.button(label, on_click=lambda t=target: go_to(t))
