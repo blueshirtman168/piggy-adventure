@@ -1,0 +1,252 @@
+{
+  "start": {
+    "title": "A Pig Sets Out",
+    "img": "start.png",
+    "text": "Piggy Pig wakes one bright morning with an adventurous heart \u2014 today she will explore the wonders of Aotearoa (New Zealand)! Which way should she trot first?",
+    "choices": [
+      {
+        "label": "\ud83c\udf3e Toward the golden farmlands",
+        "next": "farm1",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "\ud83c\udf0a Toward the sea breeze",
+        "next": "coast1",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "\ud83c\udf32 Into the deep forest valley",
+        "next": "forest1",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "\ud83c\udf4e Past the orchards and gardens",
+        "next": "orch1",
+        "traits": {
+          "comfort": 1
+        }
+      }
+    ]
+  },
+  "farm1": {
+    "title": "Meadow of Gold",
+    "img": "farm1.png",
+    "text": "Piggy Pig trots through golden wheat fields. A calf stumbles toward her and children wave from the barn. The sky grows darker with distant thunder.",
+    "choices": [
+      {
+        "label": "Play with the children",
+        "next": "farm2_ribbon",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Help the calf back to the barn",
+        "next": "farm2_barn",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Study the weather carefully",
+        "next": "farm2_sky",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ]
+  },
+  "farm2_ribbon": {
+    "title": "Ribbons & Laughter",
+    "img": "farm2_ribbon.png",
+    "text": "Children giggle as they tie a bright red ribbon around Piggy Pig\u2019s ears. The wind tugs at it playfully.",
+    "choices": [
+      {
+        "label": "Chase the gusts",
+        "next": "farm3_storm",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "Stay near the barn",
+        "next": "farm3_barn",
+        "traits": {
+          "comfort": 1
+        }
+      }
+    ]
+  },
+  "farm2_barn": {
+    "title": "Hay-Fort Kingdom",
+    "img": "farm2_barn.png",
+    "text": "Inside the barn, calves nestle in the straw. Piggy Pig nuzzles them, feeling warmth and belonging.",
+    "choices": [
+      {
+        "label": "Rest with the calves",
+        "next": "farm3_barn",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Peek outside at the storm",
+        "next": "farm3_storm",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ]
+  },
+  "farm2_sky": {
+    "title": "Reading the Weather",
+    "img": "farm2_sky.png",
+    "text": "Piggy Pig watches clouds gather and birds swoop inland. Rain is on its way.",
+    "choices": [
+      {
+        "label": "Seek shelter in the barn",
+        "next": "farm3_barn",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Stand in the storm",
+        "next": "farm3_storm",
+        "traits": {
+          "adventurous": 1
+        }
+      }
+    ]
+  },
+  "farm3_storm": {
+    "title": "Bruised Sky, Silver Rain",
+    "img": "farm3_storm.png",
+    "text": "Rain lashes the fields. Piggy Pig squeals in delight as droplets splash across her snout.",
+    "choices": [
+      {
+        "label": "Dash to the porch",
+        "next": "farm4_porch",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Dance in the rain",
+        "next": "farm4_porch",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ]
+  },
+  "farm3_barn": {
+    "title": "Barn Heartbeat",
+    "img": "farm3_barn.png",
+    "text": "The barn glows warm with lantern light. Piggy Pig listens to the soft breath of calves.",
+    "choices": [
+      {
+        "label": "Step out when rain eases",
+        "next": "farm4_porch",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ]
+  },
+  "farm4_porch": {
+    "title": "Lantern Porch",
+    "img": "farm4_porch.png",
+    "text": "Piggy Pig watches rain drip from the eaves. Lanterns swing, casting golden light.",
+    "choices": [
+      {
+        "label": "Share tea with farmers",
+        "next": "farm5_hearth",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Sneak into the kitchen",
+        "next": "farm5_kitchen",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ]
+  },
+  "farm5_hearth": {
+    "title": "Hearth of Little Suns",
+    "img": "farm5_hearth.png",
+    "text": "Farmers share hot tea and stories. Piggy Pig feels part of a bigger family.",
+    "choices": [
+      {
+        "label": "Listen to maps & tales",
+        "next": "farm6_stories",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ]
+  },
+  "farm5_kitchen": {
+    "title": "Mischief & Flour",
+    "img": "farm5_kitchen.png",
+    "text": "Piggy Pig knocks over a flour sack. Everyone laughs as a cloud of white fills the kitchen.",
+    "choices": [
+      {
+        "label": "Clean up and rejoin",
+        "next": "farm6_stories",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ]
+  },
+  "farm6_stories": {
+    "title": "Maps & Tales",
+    "img": "farm6_stories.png",
+    "text": "An old traveler spreads out maps of mountains, coasts, and forests.",
+    "choices": [
+      {
+        "label": "Follow the call of the sea",
+        "next": "coast1",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "Venture into the forest",
+        "next": "forest1",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Play with children outside",
+        "next": "children1",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ]
+  },
+  "final_prep": {
+    "title": "Closing Moments",
+    "img": "final_prep.png",
+    "text": "After all her travels, Piggy Pig finally arrives at a mountain hut. It\u2019s time for the feast reveal.",
+    "choices": [
+      {
+        "label": "\u2728 Reveal Feast",
+        "next": "REVEAL",
+        "traits": {}
+      }
+    ]
+  }
+}
