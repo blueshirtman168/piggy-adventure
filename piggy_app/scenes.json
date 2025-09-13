@@ -1,0 +1,888 @@
+{
+  "farm1": {
+    "title": "Meadow of Gold",
+    "arc": "farm",
+    "text": "Golden wheat brushes Piggy's flanks. A calf watches with moon-bright eyes. Far beyond, thunder knots the horizon.",
+    "choices": [
+      {
+        "label": "Chase the calf in a merry loop",
+        "next": "farm2_ribbon",
+        "traits": {
+          "playful": 1
+        },
+        "set_flags": [
+          "playful_ribbon_chance"
+        ]
+      },
+      {
+        "label": "Guide the calf gently toward the barn",
+        "next": "farm2_barn",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "helped_calf"
+        ]
+      },
+      {
+        "label": "Stand, breathe, and read the sky",
+        "next": "farm2_sky",
+        "traits": {
+          "reflective": 1
+        },
+        "set_flags": [
+          "reflective_calm"
+        ]
+      }
+    ],
+    "flags_text": {}
+  },
+  "farm2_ribbon": {
+    "title": "Ribbons & Laughter",
+    "arc": "farm",
+    "text": "Children run from the farmhouse, laughing. One weaves a ribbon between Piggy's ears and bows as if crowning a queen.",
+    "choices": [
+      {
+        "label": "Twirl so the ribbon flutters",
+        "next": "farm3_storm",
+        "traits": {
+          "playful": 1
+        },
+        "set_flags": [
+          "has_ribbon"
+        ]
+      },
+      {
+        "label": "Nuzzle the shy calf back to straw",
+        "next": "farm3_barn",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "has_ribbon",
+          "trusted_helper"
+        ]
+      }
+    ],
+    "flags_text": {
+      "helped_calf": "'That's the calf's friend!' a child shouts, and the barn doors swing wider."
+    }
+  },
+  "farm2_barn": {
+    "title": "Hay-Fort Kingdom",
+    "arc": "farm",
+    "text": "Hay bales become castles and tunnels. Dust turns to galaxies in sunbeams; the barn smells like sunshine and patience.",
+    "choices": [
+      {
+        "label": "Burrow into the cozy straw",
+        "next": "farm3_barn",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Climb the loft and trace lightning far away",
+        "next": "farm3_storm",
+        "traits": {
+          "reflective": 1
+        },
+        "set_flags": [
+          "awe_lightning"
+        ]
+      }
+    ],
+    "flags_text": {
+      "playful_ribbon_chance": "The children eye Piggy's ears, searching for a place to tuck a ribbon."
+    }
+  },
+  "farm2_sky": {
+    "title": "Reading the Weather",
+    "arc": "farm",
+    "text": "The wind shifts, cool and metallic. Birds dip low. Piggy senses which doors will slam and which paths will puddle.",
+    "choices": [
+      {
+        "label": "Head to the barn before the first drop",
+        "next": "farm3_barn",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Wait for the rain and greet it kindly",
+        "next": "farm3_storm",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "farm3_storm": {
+    "title": "Bruised Sky, Silver Rain",
+    "arc": "farm",
+    "text": "Thunder tumbles. Rain beading on ribbon (if any) dazzles like pearls. The gate bangs; the farmer's wife lifts a lantern.",
+    "choices": [
+      {
+        "label": "Dance in puddles until the children come",
+        "next": "farm4_porch",
+        "traits": {
+          "playful": 1
+        },
+        "set_flags": [
+          "muddy_pig"
+        ]
+      },
+      {
+        "label": "Herd the calves deeper inside",
+        "next": "farm3_barn",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "trusted_helper"
+        ]
+      },
+      {
+        "label": "Watch from the loft, counting between flash and boom",
+        "next": "farm4_porch",
+        "traits": {
+          "reflective": 1
+        },
+        "set_flags": [
+          "awe_lightning"
+        ]
+      }
+    ],
+    "flags_text": {
+      "has_ribbon": "The ribbon snaps in the gusts, a pennant of piggy pride."
+    }
+  },
+  "farm3_barn": {
+    "title": "Barn Heartbeat",
+    "arc": "farm",
+    "text": "The barn creaks and breathes. Calves lean against Piggy; the children hush their voices into stories.",
+    "choices": [
+      {
+        "label": "Guide the herd, then trot to the porch light",
+        "next": "farm4_porch",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "trusted_helper"
+        ]
+      },
+      {
+        "label": "Stay with the calves until the thunder softens",
+        "next": "farm4_porch",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "trusted_helper": "Someone drapes a dry blanket across Piggy's back with practiced hands."
+    }
+  },
+  "farm4_porch": {
+    "title": "Lantern-Frame Doorway",
+    "arc": "farm",
+    "text": "Lantern glow smears across wet boards. The farmer's wife beckons. The children gasp at Piggy's state - ribboned, muddy, or calm.",
+    "choices": [
+      {
+        "label": "Leap into their arms, squealing",
+        "next": "farm5_hearth",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Strut proudly, chin high",
+        "next": "farm5_kitchen",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Stand still and listen to the rain's rhythm",
+        "next": "farm5_hearth",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "muddy_pig": "Mud freckles the porch; a child fetches towels between giggles.",
+      "has_ribbon": "The ribbon flickers like a tiny flag in the lantern wind.",
+      "helped_calf": "The calf bumps Piggy forward as if to say, 'Go on.'"
+    }
+  },
+  "farm5_hearth": {
+    "title": "Hearth of Little Suns",
+    "arc": "farm",
+    "text": "Heat blooms from the stove. Socks dry along a line; a kettle murmurs. Piggy's breath slows to match it.",
+    "choices": [
+      {
+        "label": "Curl near the stove and sigh",
+        "next": "farm6_stories",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Watch the family quietly, learning their patterns",
+        "next": "farm6_stories",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "muddy_pig": "A towel cape turns Piggy into a superhero of thunderstorms."
+    }
+  },
+  "farm5_kitchen": {
+    "title": "Mischief & Flour",
+    "arc": "farm",
+    "text": "Jars, baskets, a loyal family dog. A cloud poofs as Piggy noses a flour tin - snow in summer.",
+    "choices": [
+      {
+        "label": "Stamp little hoofprints across tiles",
+        "next": "farm6_stories",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Let the dog lick flour off your snout",
+        "next": "farm6_stories",
+        "traits": {
+          "comfort": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "farm6_stories": {
+    "title": "Maps and Tales",
+    "arc": "farm",
+    "text": "Photos and maps bloom across the table. The children argue about the best place in Aotearoa to roam next.",
+    "choices": [
+      {
+        "label": "Point at a coast on the map",
+        "next": "coast1",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "Point at a forest valley",
+        "next": "forest1",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Yawn and flop; the children crown you with a blanket",
+        "next": "children1",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "has_ribbon": "They braid the ribbon into Piggy's tail, a comet in pink."
+    }
+  },
+  "coast1": {
+    "title": "Shells & Wind",
+    "arc": "coast",
+    "text": "Gulls stitch the sky; crabs write illegible notes in wet sand. A fisherman hums a tune older than the tide.",
+    "choices": [
+      {
+        "label": "Race the tide until spray kisses your nose",
+        "next": "coast2_hut",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "Collect spiral shells for a crown",
+        "next": "coast2_hut",
+        "traits": {
+          "playful": 1
+        },
+        "set_flags": [
+          "shell_crown"
+        ]
+      },
+      {
+        "label": "Sit by the fisherman and listen without words",
+        "next": "coast2_hut",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "coast2_hut": {
+    "title": "Shack in the Squall",
+    "arc": "coast",
+    "text": "Rain needles the tin roof. Card players shout good-natured insults; a kea eyes Piggy with elaborate curiosity.",
+    "choices": [
+      {
+        "label": "Offer a regal oink at the card table",
+        "next": "coast3_kea",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Curl beneath a bench until the clatter eases",
+        "next": "coast4_bonfire",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Watch the horizon through the rain-sheet",
+        "next": "coast3_kea",
+        "traits": {
+          "adventurous": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "has_ribbon": "The kea is particularly interested in Piggy's ribbon.",
+      "shell_crown": "The kea wants the shiny shells - all of them."
+    }
+  },
+  "coast3_kea": {
+    "title": "Kea's Red Heist",
+    "arc": "coast",
+    "text": "With a triumphant screech, the kea nabs a bright treasure and flaps toward the headland path.",
+    "choices": [
+      {
+        "label": "Chase, laughing, as wind plucks at your ears",
+        "next": "coast4_bonfire",
+        "traits": {
+          "playful": 1
+        },
+        "set_flags": [
+          "chased_kea"
+        ],
+        "clear_flags": [
+          "has_ribbon",
+          "shell_crown"
+        ]
+      },
+      {
+        "label": "Let it go, turn back before the drop-offs",
+        "next": "coast4_bonfire",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "has_ribbon": "There it goes - the ribbon!",
+      "shell_crown": "The shell crown is lighter now... considerably."
+    }
+  },
+  "coast4_bonfire": {
+    "title": "Bonfire & Shanties",
+    "arc": "coast",
+    "text": "Storm light thins. Villagers sing; lanterns bob like tame stars. Someone waves Piggy closer to the fire.",
+    "choices": [
+      {
+        "label": "Dance clumsily with the crowd",
+        "next": "forest1",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Sit and count sparks lifting to clouds",
+        "next": "forest1",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Wander toward the dark treeline, curious",
+        "next": "forest1",
+        "traits": {
+          "adventurous": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "chased_kea": "A child ties a simple string where your ribbon was - 'For luck,' they say."
+    }
+  },
+  "forest1": {
+    "title": "Fernsong Track",
+    "arc": "forest",
+    "text": "Cool hush. Ferns uncurl like sleepy fists; a stream giggles somewhere out of sight. Glowworms might be writing secrets ahead.",
+    "choices": [
+      {
+        "label": "Follow the chatter of water",
+        "next": "forest2_cave",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Scramble a mossy slope, heart bright",
+        "next": "forest2_cave",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "Hum and trot, matching the land's rhythm",
+        "next": "forest2_cave",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "forest2_cave": {
+    "title": "Glowworm Grotto",
+    "arc": "forest",
+    "text": "Ceiling-stars. A fox-like shadow watches kindly from the treeline. The air tastes like stone and rain.",
+    "choices": [
+      {
+        "label": "Bow to the unseen guardian",
+        "next": "forest3_camp",
+        "traits": {
+          "reflective": 1
+        },
+        "set_flags": [
+          "honored_guardian"
+        ]
+      },
+      {
+        "label": "Snort bravely and nose into the dark",
+        "next": "forest3_camp",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "Spin slowly beneath the glow",
+        "next": "forest3_camp",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "forest3_camp": {
+    "title": "Wanderers' Circle",
+    "arc": "forest",
+    "text": "A handful of travelers share a pot and a song. Someone strums a guitar; the fox-shape sits a little nearer than before.",
+    "choices": [
+      {
+        "label": "Share a story of storms and ribbons",
+        "next": "alps1",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Ask for a ridge route to a mountain hut",
+        "next": "alps1",
+        "traits": {
+          "adventurous": 1
+        }
+      },
+      {
+        "label": "Stay quiet, count sparks, remember the glow",
+        "next": "alps1",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "honored_guardian": "The fox-spirit dips its head; a one-beat blessing that settles in the lungs."
+    }
+  },
+  "orch1": {
+    "title": "Orchard Porches",
+    "arc": "orchard",
+    "text": "Leaves whisper like old friends. Rain dapples the path; fruit hangs like shy lanterns. An elder waves from a wooden step.",
+    "choices": [
+      {
+        "label": "Trot over and bow politely",
+        "next": "orch2_tea",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Sit quietly beneath the vines",
+        "next": "orch2_tea",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Balance a fallen fruit on your snout",
+        "next": "orch2_tea",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "orch2_tea": {
+    "title": "Kettle Breath",
+    "arc": "orchard",
+    "text": "Steam curls. Cups clink. The elder speaks of harvests that teach patience, and storms that teach gratitude.",
+    "choices": [
+      {
+        "label": "Help stack baskets and crates",
+        "next": "orch3_help",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "helped_orchard"
+        ]
+      },
+      {
+        "label": "Ask about the cottage with the oven",
+        "next": "alps1",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Perform a fruit-balancing encore",
+        "next": "children1",
+        "traits": {
+          "playful": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "orch3_help": {
+    "title": "Shoulders Together",
+    "arc": "orchard",
+    "text": "The work is steady, companionable. Hands, hooves, weathered planks - all moving in time.",
+    "choices": [
+      {
+        "label": "Accept a knitted scarf against the chill",
+        "next": "alps1",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "has_scarf"
+        ]
+      },
+      {
+        "label": "Carry baskets toward the lane, trotting proud",
+        "next": "forest1",
+        "traits": {
+          "adventurous": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "helped_orchard": "'You'll always have a place on this porch,' the elder whispers."
+    }
+  },
+  "children1": {
+    "title": "Field of Kites",
+    "arc": "children",
+    "text": "Kites write dragons on the sky. Laughter ricochets across the grass; a ribboned tail trails behind a running child.",
+    "choices": [
+      {
+        "label": "Chase the streamers with delighted squeals",
+        "next": "children2_games",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Steady the tiniest kite flyer with a gentle nudge",
+        "next": "children2_games",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "helped_child"
+        ]
+      },
+      {
+        "label": "Roll on your back and watch clouds sail",
+        "next": "children2_games",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "children2_games": {
+    "title": "Camp of Giggles",
+    "arc": "children",
+    "text": "Blankets sprawl like patchwork meadows. Someone brings out a tin of buttons and declares them pirate treasure.",
+    "choices": [
+      {
+        "label": "Lead a treasure hunt behind hay bales",
+        "next": "children3_fireflies",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Organize teams and share snacks fairly",
+        "next": "children3_fireflies",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Tell a quiet story about a fox of light",
+        "next": "children3_fireflies",
+        "traits": {
+          "reflective": 1
+        },
+        "set_flags": [
+          "remembers_fox"
+        ]
+      }
+    ],
+    "flags_text": {
+      "helped_child": "The little flyer beams at Piggy as if the wind obeys her now."
+    }
+  },
+  "children3_fireflies": {
+    "title": "Firefly Evening",
+    "arc": "children",
+    "text": "First stars, then a thousand tiny lanterns drifting near the hedges. A chorus of 'oohs' lifts in the dusk.",
+    "choices": [
+      {
+        "label": "Start a tiny camp with blankets and songs",
+        "next": "alps1",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Run with the lights and try to hum like them",
+        "next": "forest1",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Sit still so they think you are one of them",
+        "next": "garden1",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "remembers_fox": "You hum the cave's melody. The fireflies answer."
+    }
+  },
+  "garden1": {
+    "title": "Quiet House, Soft Rain",
+    "arc": "orchard",
+    "text": "Shoji glow like captured dawn. A koi pond chats to itself. The world narrows to tea steam and the patter on leaves.",
+    "choices": [
+      {
+        "label": "Rest your hooves, count the raindrops",
+        "next": "garden2_tatami",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Offer to sweep the porch dry",
+        "next": "garden2_tatami",
+        "traits": {
+          "comfort": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "garden2_tatami": {
+    "title": "Tatami Breath",
+    "arc": "orchard",
+    "text": "Floor mats smell of straw and sun. On the wall: ink paintings of rivers that keep flowing, no matter what.",
+    "choices": [
+      {
+        "label": "Trace a painted river with your hoof",
+        "next": "forest1",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Bow to your hosts and thank them",
+        "next": "alps1",
+        "traits": {
+          "comfort": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "alps1": {
+    "title": "Lantern on the Ridge",
+    "arc": "alps",
+    "text": "Snow-fine air, thin as music. A single window glows ahead; warmth spills onto the path like honey.",
+    "choices": [
+      {
+        "label": "Trot straight to the hut for warmth",
+        "next": "alps2_hut",
+        "traits": {
+          "comfort": 1
+        }
+      },
+      {
+        "label": "Climb higher to count new stars",
+        "next": "alps2_hut",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Race the wind along the ridge",
+        "next": "alps2_hut",
+        "traits": {
+          "adventurous": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "has_scarf": "The knitted scarf from the orchard keeps Piggy's neck brave."
+    }
+  },
+  "alps2_hut": {
+    "title": "Hearth & Maps",
+    "arc": "alps",
+    "text": "Boots stomp snow; a kettle sings. Old maps paper the wall. Stories are traded like mittens - freely, with warmth.",
+    "choices": [
+      {
+        "label": "Curl near the stove and sigh",
+        "next": "final_prep",
+        "traits": {
+          "comfort": 2
+        }
+      },
+      {
+        "label": "Point at a daring dotted line on a map",
+        "next": "final_prep",
+        "traits": {
+          "adventurous": 2
+        }
+      },
+      {
+        "label": "Trace a river thoughtfully with a hoof",
+        "next": "final_prep",
+        "traits": {
+          "reflective": 2
+        }
+      },
+      {
+        "label": "Boop a hiker's glove and oink",
+        "next": "final_prep",
+        "traits": {
+          "playful": 2
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "cave1": {
+    "title": "Lantern Festival Under Earth",
+    "arc": "cave",
+    "text": "Crystals glow like fruit; lanterns hang in patient rows. A friendly dog bounds up, tail like a metronome.",
+    "choices": [
+      {
+        "label": "Play chase until the caves giggle",
+        "next": "cave2_circle",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Scratch behind the dog's ears",
+        "next": "cave2_circle",
+        "traits": {
+          "comfort": 1
+        },
+        "set_flags": [
+          "dog_friend"
+        ]
+      },
+      {
+        "label": "Bow to the cave's quiet music",
+        "next": "cave2_circle",
+        "traits": {
+          "reflective": 1
+        }
+      }
+    ],
+    "flags_text": {}
+  },
+  "cave2_circle": {
+    "title": "Circle of Color",
+    "arc": "cave",
+    "text": "A fox-spirit lifts a paw in greeting. A shallow pan begins to glow like a small sunrise.",
+    "choices": [
+      {
+        "label": "Spin with lanterns, snout to the sky",
+        "next": "forest1",
+        "traits": {
+          "playful": 1
+        }
+      },
+      {
+        "label": "Sit and listen; memorize the echoes",
+        "next": "alps1",
+        "traits": {
+          "reflective": 1
+        }
+      },
+      {
+        "label": "Yip softly with the dog and new friends",
+        "next": "children1",
+        "traits": {
+          "comfort": 1
+        }
+      }
+    ],
+    "flags_text": {
+      "dog_friend": "The dog sits on your hooves as if to say, 'Stay' - then lets you go."
+    }
+  },
+  "final_prep": {
+    "title": "Closing Moments",
+    "arc": "alps",
+    "text": "Night settles softly. Wherever Piggy roamed - fields, coasts, forest, orchard, garden, caves, or snow - the day has gathered into warm company and quiet pride. It is time to see what kind of feast this journey has called forth.",
+    "choices": [
+      {
+        "label": "Reveal Piggy's feast",
+        "next": "REVEAL",
+        "traits": {}
+      }
+    ],
+    "flags_text": {}
+  }
+}
