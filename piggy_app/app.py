@@ -1,72 +1,115 @@
-
-import os, json
+import os
+import json
 import streamlit as st
 
-st.set_page_config(page_title="Piggy Pig - Painterly Buffet Adventure", page_icon="🐷", layout="centered")
+# ---------------------- CONFIG ----------------------
+st.set_page_config(
+    page_title="🐷 Piggy Pig’s Buffet Adventure",
+    page_icon="🐷",
+    layout="centered"
+)
 
-DISH_BY_DOMINANT = {"adventurous":"bolognese","comfort":"carbonara","playful":"indomie","reflective":"ochazuke"}
-PAIR_TO_DISH = {tuple(sorted(["adventurous","reflective"])):"aglio",
-                tuple(sorted(["comfort","reflective"])):"baked_fusilli",
-                tuple(sorted(["comfort","adventurous"])):"curry",
-                tuple(sorted(["playful","reflective"])):"japchae"}
-TRAITS = ["adventurous","comfort","playful","reflective"]
+# Paths
+IMG_DIR = os.path.join(os.path.dirname(__file__), "images")
+SCENES_PATH = os.path.join(os.path.dirname(__file__), "scenes.json")
 
-def img_path(name): return os.path.join(os.path.dirname(__file__), "images", name)
+# Traits and dish mapping
+TRAITS = ["adventurous", "comfort", "playful", "reflective"]
 
-def load_scenes():
-    p = os.path.join(os.path.dirname(__file__), "scenes.json")
-    return json.load(open(p, encoding="utf-8"))
-
-SCENES = load_scenes()
-
-DISH_TEXT = {
- "carbonara": ("Feast: Carbonara","A farmhouse supper that hugs you from the inside - silky, cozy, and celebratory."),
- "bolognese": ("Feast: Bolognese","Seaside stories simmered into something hearty and bold."),
- "aglio": ("Feast: Aglio e Olio","Bright, simple, and brave - the wanderer's delight."),
- "baked_fusilli": ("Feast: Baked Fusilli","Bubbling, golden comfort, baked with togetherness."),
- "indomie": ("Feast: Indomie with Egg","Playful bowls under starry skies; joy that cannot sit still."),
- "ochazuke": ("Feast: Ochazuke","Quiet warmth poured over the day - gentle, steady, soothing."),
- "curry": ("Feast: Japanese Curry Rice","Snow-day heartiness - sturdy, friendly, and steaming."),
- "japchae": ("Feast: Japchae","Lantern-lit colors, a festival on a plate."),
+DISH_BY_DOMINANT = {
+    "adventurous": "bolognese",
+    "comfort": "carbonara",
+    "playful": "indomie",
+    "reflective": "ochazuke"
 }
 
-def apply_traits(d):
-    for k,v in (d or {}).items():
-        st.session_state["traits"][k] = st.session_state["traits"].get(k,0) + v
+PAIR_TO_DISH = {
+    tuple(sorted(["adventurous", "reflective"])): "aglio",
+    tuple(sorted(["comfort", "reflective"])): "baked_fusilli",
+    tuple(sorted(["comfort", "adventurous"])): "curry",
+    tuple(sorted(["playful", "reflective"])): "japchae"
+}
 
-def set_flags(flags):
-    for f in (flags or []):
-        st.session_state["flags"][f] = True
+DISH_TEXT = {
+    "carbonara": ("Feast: Carbonara", "A farmhouse supper that hugs you from the inside—silky, cozy, and celebratory."),
+    "bolognese": ("Feast: Bolognese", "Seaside stories simmered into something hearty and bold."),
+    "aglio": ("Feast: Aglio e Olio", "Bright, simple, and brave—the wanderer’s delight."),
+    "baked_fusilli": ("Feast: Baked Fusilli", "Bubbling, golden comfort, baked with togetherness."),
+    "indomie": ("Feast: Indomie with Egg", "Playful bowls under starry skies; joy that can’t sit still."),
+    "ochazuke": ("Feast: Ochazuke", "Quiet warmth poured over the day—gentle, steady, soothing."),
+    "curry": ("Feast: Japanese Curry Rice", "Snow-day heartiness—sturdy, friendly, and steaming."),
+    "japchae": ("Feast: Japchae", "Lantern-lit colors, a festival on a plate.")
+}
 
-def clear_flags(flags):
-    for f in (flags or []):
-        if f in st.session_state["flags"]:
-            del st.session_state["flags"][f]
+# ---------------------- HELPERS ----------------------
+
+def img_path(filename: str) -> str:
+    return os.path.join(IMG_DIR, filename)
+
+def apply_traits(delta: dict):
+    for k, v in (delta or {}).items():
+        st.session_state["traits"][k] = st.session_state["traits"].get(k, 0) + v
 
 def reveal_dish():
     scores = st.session_state["traits"]
-    ranked = sorted(TRAITS, key=lambda t: scores.get(t,0), reverse=True)
-    top = scores.get(ranked[0],0)
-    top_traits = [t for t in ranked if scores.get(t,0) == top and top>0]
-    if len(top_traits) == 1:
-        dish_key = DISH_BY_DOMINANT[top_traits[0]]
+    ranked = sorted(TRAITS, key=lambda t: scores.get(t, 0), reverse=True)
+    top = scores.get(ranked[0], 0)
+
+    if top == 0:
+        dish_key = "carbonara"  # default
     else:
-        key = tuple(sorted(top_traits[:2]))
-        dish_key = PAIR_TO_DISH.get(key) or DISH_BY_DOMINANT[ranked[0]]
+        top_traits = [t for t in ranked if scores.get(t, 0) == top]
+        if len(top_traits) == 1:
+            dish_key = DISH_BY_DOMINANT[top_traits[0]]
+        else:
+            key = tuple(sorted(top_traits[:2]))
+            dish_key = PAIR_TO_DISH.get(key, DISH_BY_DOMINANT[ranked[0]])
+
     st.session_state["dish"] = dish_key
     st.session_state["scene"] = "END"
 
-# Init
+# ---------------------- SCENES ----------------------
+
+# If you want to store scenes externally, load them here:
+if os.path.exists(SCENES_PATH):
+    SCENES = json.load(open(SCENES_PATH))
+else:
+    # Minimal inline structure
+    SCENES = {
+        "start": {
+            "title": "A Pig Sets Out",
+            "img": "start.png",
+            "text": "Piggy Pig wakes one bright morning with an adventurous heart — today she will explore the wonders of Aotearoa (New Zealand)! Which way should she trot first?",
+            "choices": [
+                {"label": "🌾 Toward the golden farmlands", "next": "farm1", "traits": {"comfort": 1}},
+                {"label": "🌊 Toward the sea breeze", "next": "coast1", "traits": {"adventurous": 1}},
+                {"label": "🌲 Into the deep forest valley", "next": "forest1", "traits": {"reflective": 1}},
+                {"label": "🍎 Past the orchards and gardens", "next": "orch1", "traits": {"comfort": 1}}
+            ]
+        },
+        "final_prep": {
+            "title": "Closing Moments",
+            "img": "final_prep.png",
+            "text": "After all her travels, Piggy Pig finally arrives at a mountain hut. It’s time for the feast reveal.",
+            "choices": [
+                {"label": "✨ Reveal Feast", "next": "REVEAL", "traits": {}}
+            ]
+        }
+    }
+
+# ---------------------- STATE ----------------------
+
 if "scene" not in st.session_state:
-    st.session_state.scene = "farm1"
-    st.session_state.step = 1
+    st.session_state.scene = "start"
     st.session_state.traits = {}
     st.session_state.flags = {}
     st.session_state.history = []
+    st.session_state.step = 1
 
-st.title("Piggy Pig's Painterly Buffet Adventure")
-st.caption("Choices ripple forward. Traits shape the feast. Flags make the story remember you.")
-st.caption(f"Step {st.session_state['step']} - Traits: " + ", ".join([f"{k}={st.session_state['traits'].get(k,0)}" for k in TRAITS]))
+# ---------------------- RENDER ----------------------
+
+st.title("🐷 Piggy Pig’s Buffet Adventure")
+st.caption("An interactive story where choices shape the feast.")
 
 if st.session_state.scene == "REVEAL":
     reveal_dish()
@@ -77,29 +120,34 @@ if st.session_state.scene == "END":
     st.header(title)
     st.image(img_path(dish_key + ".png"), use_column_width=True)
     st.write(desc)
-    st.write("And yes, tonight's feast highlights sauteed mushrooms & onions. 🍄🧅")
-    if st.button("Play Again", type="primary"):
-        st.session_state.clear(); st.rerun()
-else:
-    sc = SCENES[st.session_state.scene]
-    st.header(sc["title"])
-    st.image(img_path(st.session_state['scene'] + ".png"), use_column_width=True)
+    st.write("And of course, every dish is brought to life with Piggy’s favorite touch: sautéed mushrooms & onions 🍄🧅")
 
-    text = sc["text"]
-    for f, add in (sc.get("flags_text") or {}).items():
-        if st.session_state["flags"].get(f): text += "\\n\\n" + add
-    st.write(text)
+    if st.button("🔁 Play Again", type="primary"):
+        st.session_state.clear()
+        st.rerun()
+
+else:
+    sc = SCENES.get(st.session_state.scene, SCENES["start"])
+    st.header(sc["title"])
+
+    if "img" in sc:
+        st.image(img_path(sc["img"]), use_column_width=True)
+
+    st.write(sc["text"])
 
     cols = st.columns(len(sc["choices"]))
-    for i, ch in enumerate(sc["choices"]):
+    for i, choice in enumerate(sc["choices"]):
         with cols[i % len(cols)]:
-            if st.button(ch["label"], use_container_width=True):
-                apply_traits(ch.get("traits"))
-                set_flags(ch.get("set_flags"))
-                clear_flags(ch.get("clear_flags"))
-                st.session_state.history.append({"scene": st.session_state.scene, "choice": ch["label"], "traits": ch.get("traits", {}), "set": ch.get("set_flags", []), "clear": ch.get("clear_flags", [])})
-                st.session_state.scene = ch["next"]
+            if st.button(choice["label"], use_container_width=True):
+                apply_traits(choice.get("traits"))
+                st.session_state.history.append({
+                    "scene": st.session_state.scene,
+                    "choice": choice["label"],
+                    "traits": choice.get("traits", {})
+                })
+                st.session_state.scene = choice["next"]
                 st.session_state.step += 1
-                if st.session_state.step >= 10 and st.session_state.scene not in ("final_prep","REVEAL","END"):
+
+                if st.session_state.step >= 10 and st.session_state.scene not in ("final_prep", "REVEAL", "END"):
                     st.session_state.scene = "final_prep"
                 st.rerun()
